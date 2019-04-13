@@ -39,6 +39,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @Nullable private Post currentPost;
     @Nullable private PostCallback currentCallback;
 
+   // private boolean isGridMode = false;
+
     private static final long MILLISECONDS_PER_DAY = TimeUnit.DAYS.toMillis(1);
     private static final long MILLISECONDS_PER_HOUR = TimeUnit.HOURS.toMillis(1);
 
@@ -76,7 +78,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
      * Displays the Post
      * @param post post
      */
-    public void bindPost(@Nullable Post post) {
+    public void bindPost(@Nullable Post post, boolean isGridMode) {
         currentPost = post;
 
         if(currentPost != null) {
@@ -102,6 +104,21 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             imageView.setImageResource(android.R.color.white);
             userIconView.setImageResource(android.R.color.white);
         }
+
+        int visibility = isGridMode ? View.GONE : View.VISIBLE;
+
+        userIconView.setVisibility(visibility);
+        locationView.setVisibility(visibility);
+        menuIcon.setVisibility(visibility);
+
+        heartIcon.setVisibility(visibility);
+        commentIcon.setVisibility(visibility);
+        sendIcon.setVisibility(visibility);
+        bookmarkIcon.setVisibility(visibility);
+
+        captionView.setVisibility(visibility);
+        datetimeLabel.setVisibility(visibility);
+
 
     }
 
